@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class WordListAdapter internal constructor(context: Context) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
+class WordListAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
     private var words = emptyList<Word>()

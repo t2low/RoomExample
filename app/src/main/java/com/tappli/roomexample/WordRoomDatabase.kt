@@ -14,7 +14,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
 
     private class WordDatabaseCallback(
-            private val scope: CoroutineScope
+        private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
 
         override fun onOpen(db: SupportSQLiteDatabase) {
@@ -40,8 +40,8 @@ abstract class WordRoomDatabase : RoomDatabase() {
         private var INSTANCE: WordRoomDatabase? = null
 
         fun getDatabase(
-                context: Context,
-                scope: CoroutineScope
+            context: Context,
+            scope: CoroutineScope
         ): WordRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -49,12 +49,12 @@ abstract class WordRoomDatabase : RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        WordRoomDatabase::class.java,
-                        "word_database"
+                    context.applicationContext,
+                    WordRoomDatabase::class.java,
+                    "word_database"
                 )
-                        .addCallback(WordDatabaseCallback(scope))
-                        .build()
+                    .addCallback(WordDatabaseCallback(scope))
+                    .build()
                 INSTANCE = instance
                 return instance
             }
